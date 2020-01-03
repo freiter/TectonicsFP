@@ -2984,12 +2984,12 @@ begin
       If Sender=TectonicsFPintheWeb1 then
       begin
         If ValueExists('Home') then Dummy1:= ReadString('Home')
-        else Dummy1:='http://go.to/TectonicsFP';
+        else Dummy1:=capHP;
       end
       else
       begin
         If ValueExists('Support') then Dummy1:=ReadString('Support')
-        else Dummy1:='http://homepage.uibk.ac.at/homepage/c715/c71508/support';
+        else Dummy1:=capHP;
       end;
     CloseKey;
     RootKey:=HKEY_CLASSES_ROOT;
@@ -3013,8 +3013,7 @@ begin
     If not CreateProcess(nil, PChar(dummy2+'  '+dummy1), nil, nil, False, 0, nil,
            nil, MyStartupInfo, MyProcessInformation ) then
       MessageDlg('Can not Start Browser.', mtError, [mbOk], 0); //added 20000430
-    //ShellExecute(Handle, 'open', PChar('framedem.exe'), '', PChar('E:\Michi\THTMLViewer\Neu\'), SW_SHOW);
-  end;
+    end;
 end;
 
 initialization

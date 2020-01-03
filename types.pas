@@ -4,20 +4,18 @@ interface
 uses Windows, Menus, Dialogs, SysUtils, Forms, Printers, Controls, math, Graphics, IniFiles, Registry, Messages;
 
 const
-  capTitle: string = 'TectonicsFP (Open Source)'; //this version name will be shown in the title form on program startup
+  capTitle: string = 'TectonicsFP (Open)'; //this version name will be shown in the title form on program startup
   capVer: string = '1.79.1171'; //this version number will be shown in the about box
   VerDate: string ='2019-12-31';  //Creation date of this compilation
-  offVer: String ='1.7.9 FREE';  //this version number will be shown in the title form on program startup
-  CopyrightMessage: String = 'Copyright © 1996-2019 by Franz Reiter and Peter Acs';
+  offVer: String ='1.7.9';  //this version number will be shown in the title form on program startup
+  CopyrightMessage: String = 'TectonicsFP was written by Franz Reiter and Peter Acs, 1996-2019';
+  capHP: String = 'https://github.com/freiter/TectonicsFP';
   const TFPRegEntryVersion: string ='1.0'; //used to access registry and ini-file entries
   RecognizeTectonicData: Boolean = False;  //for version 2 only: Recognize type of tectonic data in file
 
-  //FreeVersion: Boolean = true; //true for hardlock (program does not perform hardware check)
-                               //false for www version
+
   //****************************************************************************************
-  // IMPORTANT: For Internet demo-versions undefine compiler conditional symbol 'Fullversion' on top of
-  // lowhem-unit!
-  // demo valid until 2066/12/31 !!!
+  //2020-01-04 Copy
   //*****************************************************************************************
 
   //Size of lower-hemisphere plots in memory-metafile

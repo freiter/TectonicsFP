@@ -17,7 +17,7 @@ type
     lblCompany: TLabel;
     lblSerial: TLabel;
     Label2: TLabel;
-    Label6: TLabel;
+    lblHP: TLabel;
     btnSerial: TButton;
     edtSerial: TEdit;
     btnRegister: TButton;
@@ -49,6 +49,7 @@ begin
   lblCompany.caption:=lblCompany.caption+company;
   lblCopyright.Caption:=CopyrightMessage;
   lblVersion.Caption:=lblVersion.caption+' '+tfpversion;
+  lblHP.Caption:=capHP;
   btnSerial.Visible:= False;
 end;
 
