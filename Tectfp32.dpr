@@ -39,7 +39,6 @@ uses
   Inspect in 'Inspect.pas' {InspectorForm},
   Options in 'Options.pas' {OptionDialog},
   results in 'results.pas' {Resinsp},
-  licence in 'licence.pas' {licencefm},
   FileType in 'FileType.pas' {FileTypeDlg},
   Invers in 'Invers.pas',
   NDA in 'Nda.pas',
@@ -127,12 +126,13 @@ begin
   Titpfm:=TTitpfm.Create(Application);
   With Titpfm do
   begin
-    TitleLabel.Caption := capTitle+' '+offVer;
+    TitleLabel.Caption:= capTitle+' '+offVer;
+    lblLicense.Caption:= capLicense;
     Update;
     Show;
   end;
   failed:=false;
-  with TTFPRegistry.create do //retrieve license data from registry
+  {with TTFPRegistry.create do //retrieve license data from registry
   try
     RootKey:=HKEY_LOCAL_MACHINE;
     Failed:= not keyexists('SOFTWARE\GeoCompute\TectonicsFP\'+TFPRegEntryVersion);
@@ -160,30 +160,12 @@ begin
     Titpfm.Hide;
     Titpfm.Free;
     Exit;
-  end;
+  end;}
   TFPVersion:=Copy(TFPSerialNumber,0,4);
-  //TFPSerialNumber:=copy(TFPSerialNumber,5,5);
-    Licensee:= UserName; //091026 changed validation of serial no.
-    //Teststring :=  Username + Copy(VerDate, 1, 4) + Company + Copy(VerDate, 6, 2) + offVer + Copy(VerDate, 9, 2);
-    {If (AnsiLowerCase(StrMd5(Username + Copy(VerDate, 1, 4) + Company + Copy(VerDate, 6, 2) + offVer + Copy(VerDate, 9, 2))) <> AnsiLowerCase(TFPSerialNumber))
-      and (UserName <> 'Franz Reiter') then
-    begin
-      MessageDlg('Invalid serial number! Entering Demo mode.', mtError,[mbOK], 0);
-      Demo:= True;
-      Licensee:= UserName;
-      TFPVersion:=Capver+'-DEMO';
-    end else TFPVersion:=Capver;}
   TFPVersion:=Capver;
   CurrentTime := GetTickCount div 1000;
-  With Titpfm do
-  begin
-    lblLicensee.Caption:= 'Licensed to: '+#$D+#$A+Licensee;
-    lblLicensee.left:=(width-lblLicensee.width) div 2;
-    lblCompany.Caption:=Company;
-    lblCompany.left:=(width-lblCompany.width) div 2;
-    Update;
-  end;
-  {************************************************************************}
+  TitPfm.Update;
+  //************************************************************************
   Dummy:=TFPVersion;
   Delete(Dummy, 8, 3);
   Dummy:=Dummy+'STU';

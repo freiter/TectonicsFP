@@ -12,8 +12,7 @@ type
     Image1: TImage;
     TitleLabel: TLabel;
     Bevel1: TBevel;
-    lblLicensee: TLabel;
-    lblCompany: TLabel;
+    lblLicense: TLabel;
     procedure FormCreate(Sender: TObject);
   end;
 

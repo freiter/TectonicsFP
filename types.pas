@@ -6,9 +6,10 @@ uses Windows, Menus, Dialogs, SysUtils, Forms, Printers, Controls, math, Graphic
 const
   capTitle: string = 'TectonicsFP (Open)'; //this version name will be shown in the title form on program startup
   capVer: string = '1.79.1171'; //this version number will be shown in the about box
-  VerDate: string ='2019-12-31';  //Creation date of this compilation
+  VerDate: string ='2020-01-20';  //Creation date of this compilation
   offVer: String ='1.7.9';  //this version number will be shown in the title form on program startup
-  CopyrightMessage: String = 'TectonicsFP was written by Franz Reiter and Peter Acs, 1996-2019';
+  CopyrightMessage: String = 'TectonicsFP was written by Franz Reiter and Peter Acs, 1996-2020';
+  capLicense: string = 'This program is provided as is, under the GNU lesser general public license, Version 3 (29 June 2007)';
   capHP: String = 'https://github.com/freiter/TectonicsFP';
   const TFPRegEntryVersion: string ='1.0'; //used to access registry and ini-file entries
   RecognizeTectonicData: Boolean = False;  //for version 2 only: Recognize type of tectonic data in file
