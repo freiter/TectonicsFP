@@ -51,7 +51,7 @@ uses
 
 var
   CurrentTime: LongInt;
-  failed, firstrun: boolean;
+  firstrun: boolean;
   memory : TMEMORYSTATUS;
   os : TOSVERSIONINFO;
   systeminfo : TSystemInfo;
@@ -131,36 +131,6 @@ begin
     Update;
     Show;
   end;
-  failed:=false;
-  {with TTFPRegistry.create do //retrieve license data from registry
-  try
-    RootKey:=HKEY_LOCAL_MACHINE;
-    Failed:= not keyexists('SOFTWARE\GeoCompute\TectonicsFP\'+TFPRegEntryVersion);
-    if not failed then
-    begin
-      OpenKey('SOFTWARE\GeoCompute\TectonicsFP\'+TFPRegEntryVersion, false);
-      Failed := not ValueExists('Name') or not ValueExists('Company')
-             or not ValueExists('Serial');
-      If not Failed then
-      begin
-        Username:=ReadString('Name','');
-        Company:=ReadString('Company','');
-        TFPSerialNumber:=ReadString('Serial','');
-      end;
-      CloseKey;
-    end;
-  finally
-    Free;
-  end;
-  if Failed then
-  begin  //HKEY_LOCAL_MACHINE does not exist
-    MessageDlg('TectonicsFP is not properly installed.'+#13+#10+
-                  'Please run the setup-program to install the application.',
-                  mtError,[mbOK], 0);
-    Titpfm.Hide;
-    Titpfm.Free;
-    Exit;
-  end;}
   TFPVersion:=Copy(TFPSerialNumber,0,4);
   TFPVersion:=Capver;
   CurrentTime := GetTickCount div 1000;
