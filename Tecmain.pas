@@ -1357,7 +1357,10 @@ end;
 procedure TTecMainWin.TectonicHelp1Click(Sender: TObject);
 begin
   If not Application.Helpcommand(Help_Finder,0) then
-   MessageDlg('Can not start windows help!', mtError,[mbOk], 0);
+  begin //2020-02-02 workaround to open windows chm help file instead of old hlp format which is not supported on Windows 10
+    //MessageDlg('Can not start windows help!', mtError,[mbOk], 0);
+    ShellExecute(Handle, 'open', PChar(ExtractFilePath(Application.ExeName) + '\Help\TectFP32.chm'), nil, nil, SW_SHOW);
+  end;
 end;
 
 procedure TTecMainWin.UpdateItems(Sender: TObject);
@@ -2979,19 +2982,6 @@ begin
   Dummy2:='';
   With TRegistry.Create do
   try
-    RootKey:=HKEY_LOCAL_MACHINE;
-    OpenKey('SOFTWARE\GeoCompute\TectonicsFP', False);
-      If Sender=TectonicsFPintheWeb1 then
-      begin
-        If ValueExists('Home') then Dummy1:= ReadString('Home')
-        else Dummy1:=capHP;
-      end
-      else
-      begin
-        If ValueExists('Support') then Dummy1:=ReadString('Support')
-        else Dummy1:=capHP;
-      end;
-    CloseKey;
     RootKey:=HKEY_CLASSES_ROOT;
     OpenKey('http\shell\open\command', false);
       Dummy2:=ReadString('');
@@ -3000,6 +2990,7 @@ begin
   finally
     Free;
   end;
+  Dummy1:=capHP;
   If (Dummy1<>'') and (Dummy2<>'') then
   begin
     with MyStartupInfo do
